@@ -1,5 +1,4 @@
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -85,8 +84,7 @@ public class AutomobileInventory {
                               int
                                       mileageOld, String makeNew, String modelNew, String colorNew, int yearNew, int
                                       mileageNew) {
-        for (int i = 0; i < vehicleList.size(); i++) {
-            AutomobileInventory vehicle = vehicleList.get(i);
+        for (AutomobileInventory vehicle : vehicleList) {
             if (vehicle.getMake().equalsIgnoreCase(makeOld) &&
                     vehicle.getModel().equalsIgnoreCase(modelOld)
                     && vehicle.getColor().equalsIgnoreCase(colorOld) &&
@@ -98,7 +96,7 @@ public class AutomobileInventory {
                 vehicle.setYear(yearNew);
                 vehicle.setMileage(mileageNew);
                 System.out.println("\nThe " + vehicle.getMake() + " " + vehicle.getModel() + "has been updated and added to the inventory.");
-                        Display();
+                Display();
             }
         }
     }
@@ -132,10 +130,6 @@ public class AutomobileInventory {
                 bw.newLine();
             }
             bw.flush();// Flushing File Write
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
